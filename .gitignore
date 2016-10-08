@@ -16,3 +16,6 @@ venv
 docs/_build/
 
 settings.py
+
+# Twitter classifier
+TwitterClassifier/
