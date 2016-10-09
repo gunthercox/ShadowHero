@@ -1,1 +1,6 @@
-chatterbot>=0.4.11,<0.5.0
+chatterbot>=0.4.10,<0.5.0
+oauth2
+nltk
+sklearn
+reverend
+pycurl

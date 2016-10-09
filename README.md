@@ -3,7 +3,7 @@
 ShadowHero is an automated online harassment countermeasure agent designed to identify
 harassment situations when they happen and take appropriate action.
 
-# The MLH Hack Harassment Challenge
+# The MLH + Hack Harassment Challenge
 
 http://www.hackharassment.com/mlh/
 
