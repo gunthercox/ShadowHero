@@ -12,7 +12,7 @@ identifying and reducing online harassment.
 
 # Running the project
 
-1. Clone this repository: 'git clone https://github.com/gunthercox/ShadowHero/'
+1. Clone this repository: `git clone https://github.com/gunthercox/ShadowHero/`
 2. Change directory: `cd ShadowHero`
 3. `git clone https://github.com/HackHarassment/TwitterClassifier.git`
 4. Extract the zipped files in the TwitterClassifier data directory
