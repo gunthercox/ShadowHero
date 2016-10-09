@@ -4,4 +4,3 @@ nltk
 sklearn
 reverend
 pycurl
-textblob

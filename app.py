@@ -1,6 +1,10 @@
 from chatterbot import ChatBot
 from settings import GITTER
+import logging
 
+
+# Uncomment the following line to enable verbose logging
+logging.basicConfig(level=logging.INFO)
 
 chatbot = ChatBot(
     'ShadowHero',
