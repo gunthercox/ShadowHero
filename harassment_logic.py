@@ -7,6 +7,7 @@ import pickle
 import os
 import re
 import codecs
+import random
 
 
 class AntiHarassmentLogic(LogicAdapter):
@@ -17,7 +18,11 @@ class AntiHarassmentLogic(LogicAdapter):
     """
 
     def __init__(self, **kwargs):
-        super(AntiHarassmentLogic, self).__init__(kwargs)
+        super(AntiHarassmentLogic, self).__init__(**kwargs)
+
+        self.callouts = [
+            'Hey, take it easy.'
+        ]
 
         PICKLE_FILE = 'small_classifier_pickle.pickle'
 
@@ -33,8 +38,8 @@ class AntiHarassmentLogic(LogicAdapter):
             good_corpus_path = os.path.join(data_directory, 'good_corpus_small.txt')
             bad_corpus_path = os.path.join(data_directory, 'bad_corpus_small.txt')
 
-            good_training_data = [(self.clean_text(line), 0, ) for line in open(good_corpus_path, encoding='utf8') if not line.startswith('#')]
-            bad_training_data = [(self.clean_text(line), 1, ) for line in codecs.open(bad_corpus_path, 'r', encoding='utf-8', errors='ignore') if not line.startswith('#')]
+            good_training_data = [(self.clean_text(line), 1, ) for line in open(good_corpus_path, 'rU', encoding='utf8') if line.strip() and not line.startswith('#')]
+            bad_training_data = [(self.clean_text(line), 0, ) for line in codecs.open(bad_corpus_path, 'rU', encoding='utf-8', errors='ignore') if line.strip() and not line.startswith('#')]
 
             training_data = list(good_training_data) + list(bad_training_data)
 
@@ -57,7 +62,9 @@ class AntiHarassmentLogic(LogicAdapter):
         return True
 
     def process(self, statement):
-
         confidence = self.classifier.classify(statement.text)
 
-        return confidence, statement
+        text = random.choice(self.callouts)
+        response_statement = Statement(text)
+
+        return confidence, response_statement

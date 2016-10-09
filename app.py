@@ -7,8 +7,12 @@ chatbot = ChatBot(
     gitter_room=GITTER['ROOM'],
     gitter_api_token=GITTER['API_TOKEN'],
     input_adapter='chatterbot.adapters.input.Gitter',
-    output_adapter='chatterbot.adapters.output.Gitter',
-    trainer='chatterbot.trainers.ChatterBotCorpusTrainer'
+    output_adapter='selective_response.SelectiveGitterResponse',
+    logic_adapters=[
+        'harassment_logic.AntiHarassmentLogic'
+    ],
+    trainer='chatterbot.trainers.ChatterBotCorpusTrainer',
+    gitter_only_respond_to_mentions=False
 )
 
 chatbot.train('chatterbot.corpus.english')
